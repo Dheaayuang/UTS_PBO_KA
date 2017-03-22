@@ -24,12 +24,18 @@ import javax.swing.table.DefaultTableModel;
  * @author Dhea
  */
 public class FrameMain extends javax.swing.JFrame {
+    
+    String nol_jam="";
+    String nol_menit="";
+    String nol_detik="";
 
     /**
      * Creates new form FrameMain
      */
     public FrameMain() {
         initComponents();
+        setTanggal();
+        setJam();
     }
 
     /**
@@ -44,7 +50,6 @@ public class FrameMain extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         lbltanggal = new javax.swing.JLabel();
-        lblJam = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNama = new javax.swing.JTextField();
@@ -58,24 +63,27 @@ public class FrameMain extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtHarga = new javax.swing.JTextField();
-        btnSave = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         cbTujuan = new javax.swing.JComboBox<>();
         cbAwal = new javax.swing.JComboBox<>();
         txttanggal = new com.toedter.calendar.JDateChooser();
-        btnDelete = new javax.swing.JButton();
-        btnPrint = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
         rdEksekutif = new javax.swing.JRadioButton();
         rdEkonomi = new javax.swing.JRadioButton();
         cbDuduk = new javax.swing.JComboBox<>();
         cbWaktu = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
+        btnPrint = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblJam = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -83,16 +91,10 @@ public class FrameMain extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 153, 153));
         jPanel2.setLayout(null);
 
+        lbltanggal.setBackground(new java.awt.Color(255, 255, 255));
         lbltanggal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel2.add(lbltanggal);
-        lbltanggal.setBounds(570, 40, 100, 30);
-
-        lblJam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel2.add(lblJam);
-        lblJam.setBounds(570, 80, 90, 30);
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(170, 0, 730, 120);
+        lbltanggal.setBounds(700, 50, 100, 30);
 
         jPanel4.setBackground(new java.awt.Color(255, 204, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "ISI DATA TIKET", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -103,14 +105,14 @@ public class FrameMain extends javax.swing.JFrame {
         jPanel4.add(jLabel1);
         jLabel1.setBounds(20, 30, 110, 30);
         jPanel4.add(txtNama);
-        txtNama.setBounds(140, 30, 170, 30);
+        txtNama.setBounds(130, 30, 170, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("No ID");
         jPanel4.add(jLabel2);
         jLabel2.setBounds(20, 70, 80, 30);
         jPanel4.add(txtId);
-        txtId.setBounds(140, 70, 170, 30);
+        txtId.setBounds(130, 70, 170, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Station Awal");
@@ -125,101 +127,51 @@ public class FrameMain extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Tanggal Berangkat");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(350, 30, 110, 30);
+        jLabel5.setBounds(320, 30, 110, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Jenis Kereta");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(350, 70, 80, 30);
+        jLabel6.setBounds(320, 70, 80, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Waktu Berangkat");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(350, 110, 100, 30);
+        jLabel7.setBounds(320, 110, 100, 30);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Tempat Duduk");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(350, 150, 110, 30);
+        jLabel8.setBounds(320, 150, 110, 30);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Harga");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(660, 30, 80, 30);
+        jLabel9.setBounds(630, 30, 80, 30);
         jPanel4.add(txtHarga);
-        txtHarga.setBounds(720, 30, 170, 30);
-
-        btnSave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnSave);
-        btnSave.setBounds(680, 80, 80, 30);
-
-        btnRefresh.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnRefresh);
-        btnRefresh.setBounds(680, 160, 80, 30);
+        txtHarga.setBounds(690, 30, 170, 30);
 
         cbTujuan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbTujuan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Stasiun --", "Stasiun Malang", "Stasiun Surabaya", "Stasiun Blitar", "Stasiun Tulungagung", "Stasiun Sidoarjo" }));
         jPanel4.add(cbTujuan);
-        cbTujuan.setBounds(140, 150, 170, 30);
+        cbTujuan.setBounds(130, 150, 170, 30);
 
         cbAwal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbAwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Stasiun --", "Stasiun Malang", "Stasiun Surabaya", "Stasiun Blitar", "Stasiun Tulungagung", "Stasiun Sidoarjo" }));
         jPanel4.add(cbAwal);
-        cbAwal.setBounds(140, 110, 170, 30);
+        cbAwal.setBounds(130, 110, 170, 30);
         jPanel4.add(txttanggal);
-        txttanggal.setBounds(470, 30, 170, 30);
-
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnDelete);
-        btnDelete.setBounds(790, 100, 80, 30);
-
-        btnPrint.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnPrint);
-        btnPrint.setBounds(790, 140, 80, 30);
-
-        btnClear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnClear.setText("Clear");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnClear);
-        btnClear.setBounds(680, 120, 80, 30);
+        txttanggal.setBounds(440, 30, 170, 30);
 
         buttonGroup1.add(rdEksekutif);
         rdEksekutif.setText("Eksekutif");
         jPanel4.add(rdEksekutif);
-        rdEksekutif.setBounds(470, 70, 90, 30);
+        rdEksekutif.setBounds(440, 70, 90, 30);
 
         buttonGroup1.add(rdEkonomi);
         rdEkonomi.setText("Ekonomi");
         jPanel4.add(rdEkonomi);
-        rdEkonomi.setBounds(560, 70, 80, 30);
+        rdEkonomi.setBounds(530, 70, 80, 30);
 
         cbDuduk.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbDuduk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Gerbong --", "Gerbong 1", "Gerbong 2", "Gerbong 3", "Gerbong 4", "Gerbong 5" }));
@@ -229,7 +181,7 @@ public class FrameMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(cbDuduk);
-        cbDuduk.setBounds(470, 150, 170, 30);
+        cbDuduk.setBounds(440, 150, 170, 30);
 
         cbWaktu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cbWaktu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Waktu Berangkat --", "05.00", "07.00", "10.00", "14.30", "17.00", "19.00", "20.30" }));
@@ -239,15 +191,72 @@ public class FrameMain extends javax.swing.JFrame {
             }
         });
         jPanel4.add(cbWaktu);
-        cbWaktu.setBounds(470, 110, 170, 30);
+        cbWaktu.setBounds(440, 110, 170, 30);
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 153));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.add(jPanel3);
-        jPanel3.setBounds(660, 70, 230, 130);
+        jPanel3.setLayout(null);
 
-        getContentPane().add(jPanel4);
-        jPanel4.setBounds(0, 120, 900, 210);
+        btnPrint.setBackground(new java.awt.Color(255, 204, 204));
+        btnPrint.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPrint);
+        btnPrint.setBounds(70, 70, 80, 30);
+
+        btnDelete.setBackground(new java.awt.Color(255, 204, 204));
+        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnDelete);
+        btnDelete.setBounds(130, 40, 80, 30);
+
+        btnSave.setBackground(new java.awt.Color(255, 204, 204));
+        btnSave.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSave);
+        btnSave.setBounds(10, 10, 80, 30);
+
+        btnClear.setBackground(new java.awt.Color(255, 204, 204));
+        btnClear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnClear);
+        btnClear.setBounds(130, 10, 80, 30);
+
+        btnRefresh.setBackground(new java.awt.Color(255, 204, 204));
+        btnRefresh.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnRefresh);
+        btnRefresh.setBounds(10, 40, 80, 30);
+
+        jPanel4.add(jPanel3);
+        jPanel3.setBounds(630, 70, 230, 110);
+
+        jPanel2.add(jPanel4);
+        jPanel4.setBounds(10, 140, 880, 210);
 
         jPanel5.setBackground(new java.awt.Color(255, 204, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -267,18 +276,37 @@ public class FrameMain extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblData);
 
         jPanel5.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 880, 190);
+        jScrollPane1.setBounds(10, 10, 860, 150);
 
-        getContentPane().add(jPanel5);
-        jPanel5.setBounds(0, 330, 900, 210);
+        jPanel2.add(jPanel5);
+        jPanel5.setBounds(10, 360, 880, 170);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel10.setIcon(new javax.swing.ImageIcon("D:\\DATA 1\\MOKLET\\XI RPL 3\\SEMESTER 2\\PEMROGRAMAN BERBASIS OBJEK\\UTS_PBO_07_DHEA\\logo - Copy.png")); // NOI18N
         jPanel1.add(jLabel10);
 
-        getContentPane().add(jPanel1);
+        jPanel6.add(jPanel1);
         jPanel1.setBounds(0, 0, 170, 120);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel11.setText("PEMESANAN TIKET KERETA API");
+        jPanel6.add(jLabel11);
+        jLabel11.setBounds(200, 30, 380, 60);
+
+        lblJam.setBackground(new java.awt.Color(255, 255, 255));
+        lblJam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel6.add(lblJam);
+        lblJam.setBounds(690, 70, 120, 30);
+
+        jPanel2.add(jPanel6);
+        jPanel6.setBounds(10, 10, 880, 120);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 0, 900, 540);
 
         setSize(new java.awt.Dimension(917, 581));
         setLocationRelativeTo(null);
@@ -349,8 +377,8 @@ public class FrameMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         int baris = tblData.getSelectedRow();
         if (baris != -1){
-            String NamaPemesan = tblData.getValueAt(baris, 0).toString();
-            String SQL = "DELETE FROM tb_pemesan WHERE NamaPemesan = '"+NamaPemesan+"'";
+            String id = tblData.getValueAt(baris, 1).toString();
+            String SQL = "DELETE FROM tb_pemesan WHERE NoID = '"+id+"'";
             int status = KoneksiDB.execute(SQL);
             if (status == 1){
                 JOptionPane.showMessageDialog(this, "Data berhasil dihapus", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -364,14 +392,16 @@ public class FrameMain extends javax.swing.JFrame {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         // TODO add your handling code here:
-        MessageFormat header = new MessageFormat("Biodata Siswa SMKTELKOM Malang");
+        /*MessageFormat header = new MessageFormat("Data Calon Penumpang Kereta Api");
         MessageFormat footer = new MessageFormat("Page {0,number,integer}   ");
         try{
             tblData.print(JTable.PrintMode.FIT_WIDTH, header, footer, true, null, true, null);
         }
         catch (java.awt.print.PrinterException e){
             System.err.format("Cannot print %s%n", e.getMessage());
-        }
+        }*/
+        JOptionPane.showMessageDialog(this, "Data anda akan di proses","Sukses", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
     }//GEN-LAST:event_btnPrintActionPerformed
 
     /**
@@ -422,6 +452,7 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbWaktu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -435,6 +466,7 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblJam;
     private javax.swing.JLabel lbltanggal;
@@ -499,24 +531,21 @@ public class FrameMain extends javax.swing.JFrame {
                 int nilai_detik = dt.getSeconds();
                 
                 if(nilai_jam<= 9){
-                    String nol_jam = "0";
+                    nol_jam = "0";
                 }
                 if(nilai_menit <= 9){
-                    String nol_menit = "0";
+                    nol_menit = "0";
                 }
                 if(nilai_detik <= 9){
-                    String nol_detik = "0";
+                    nol_detik = "0";
                 }
-                
-                String nol_jam = null;
-                String nol_menit = null;
-                String nol_detik = null;
                 
                 String jam = nol_jam + Integer.toString(nilai_jam);
                 String menit = nol_menit + Integer.toString(nilai_menit);
                 String detik = nol_detik + Integer.toString(nilai_detik);
-                
+                lblJam.setText("Jam : "+ jam + ":" + menit + ":" + detik);
             }
         };
+        new Timer(100, taskPerformer).start();
     }
 }

@@ -85,7 +85,8 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(120, 30, 120, 30);
 
-        txtnama.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtnama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtnama.setToolTipText("");
         jPanel1.add(txtnama);
         txtnama.setBounds(60, 70, 190, 30);
 
@@ -93,6 +94,8 @@ public class login extends javax.swing.JFrame {
         jLabel1.setText("Password");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(120, 110, 100, 30);
+
+        txtpass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(txtpass);
         txtpass.setBounds(60, 150, 190, 30);
 
